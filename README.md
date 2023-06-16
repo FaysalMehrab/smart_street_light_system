@@ -4,9 +4,9 @@ Here are some short code examples that highlight the key functionalities of the 
 
 1) Reading IR Sensor Inputs:
 
-`x = digitalRead(ir);
-y = digitalRead(ir1);
-z = digitalRead(ir2);`
+`x = digitalRead(ir);`
+`y = digitalRead(ir1);`
+`z = digitalRead(ir2);`
 
 These lines of code read the state of the IR sensors and store the values in variables x, y, and z, respectively.
 
