@@ -13,12 +13,20 @@ Here are some short code examples that highlight the key functionalities of the 
 These lines of code read the state of the IR sensors and store the values in variables x, y, and z, respectively.
 
 2) Turning On LED Segments:
-`if (x == 0) {
+`if (x == 0)
+
+{
+
   // Check if LED segment 1 is already on
+  
   if (!led1On) {
+  
     led1On = true;  // Turn on LED segment 1
+    
     previousMillis1 = currentMillis;  // Record start time
+    
   }
+  
 }`
 
 This code snippet checks if the IR sensor associated with LED segment 1 detects an object. If the segment is not already on (!led1On), it sets the flag led1On to true and records the current time in previousMillis1.
