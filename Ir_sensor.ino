@@ -1,37 +1,79 @@
+int ir = 2;
+int led1 = 3; 
+int ir1 = 4;
+int led2 = 5;
+int ir2 = 6; 
+int led3 = 7; 
+int x; 
+int y; 
+int z; 
 
+unsigned long previousMillis1 = 0; 
+unsigned long previousMillis2 = 0; 
+unsigned long previousMillis3 = 0; 
 
+const unsigned long interval = 2000; 
 
-int ir = 7;
-int led1 = 8;
-int led2 = 6;
-int x;
-void setup() {
+bool led1On = false;
+bool led2On = false; 
+bool led3On = false; 
 
-  // put your setup code here, to run once:
+void setup() 
+{ 
+Serial.begin(9600); 
+pinMode(ir, INPUT); 
+pinMode(led1, OUTPUT); 
+pinMode(ir1, INPUT); 
+pinMode(led2, OUTPUT); 
+pinMode(ir2, INPUT); 
+pinMode(led3, OUTPUT);
+ } 
 
-  Serial.begin(9600);
-  pinMode(6, OUTPUT);
-  pinMode(7, INPUT);
-  pinMode(8, OUTPUT);
-   
+void loop()
+{ 
+x = digitalRead(ir); 
+y = digitalRead(ir1);
+z = digitalRead(ir2);
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
+unsigned long currentMillis = millis(); 
 
-x = digitalRead(ir);
-Serial.println(x);
-delay(10);
-
-if(x == 1)
+if (x == 0) 
+{ 
+  if (!led1On) 
+  { 
+    led1On = true; 
+    previousMillis1 = currentMillis; 
+  } 
+} 
+if (y == 0) 
+{ 
+  if (!led2On)
+  { 
+    led2On = true;
+    previousMillis2 = currentMillis;
+  }
+} 
+if (z == 0) 
+{ 
+  if (!led3On)
+  { 
+    led3On = true; 
+   previousMillis3 = currentMillis; 
+  } 
+}
+if (led1On && (currentMillis - previousMillis1 >= interval)) 
+{ 
+  led1On = false;
+} 
+if (led2On && (currentMillis - previousMillis2 >= interval))
 {
-  digitalWrite(8,LOW);
-  digitalWrite(6, HIGH);
-}
-
-else 
-{
-  digitalWrite(8, HIGH);
-  digitalWrite(6,LOW);
-}
-}
+  led2On = false; 
+} 
+if (led3On && (currentMillis - previousMillis3 >= interval))
+{ 
+  led3On = false; 
+} 
+digitalWrite(led1, led1On); 
+digitalWrite(led2, led2On); 
+digitalWrite(led3, led3On); }
