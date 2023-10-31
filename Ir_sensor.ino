@@ -34,7 +34,7 @@ void loop()
 x = digitalRead(ir); 
 y = digitalRead(ir1);
 z = digitalRead(ir2);
-}
+
 
 unsigned long currentMillis = millis(); 
 
@@ -76,4 +76,5 @@ if (led3On && (currentMillis - previousMillis3 >= interval))
 } 
 digitalWrite(led1, led1On); 
 digitalWrite(led2, led2On); 
-digitalWrite(led3, led3On); }
+digitalWrite(led3, led3On); 
+}
